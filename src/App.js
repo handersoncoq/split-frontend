@@ -1,8 +1,8 @@
 import './App.css';
 import GlobalStyle from './styles/GlobalStyles';
-import Card from './reusables/Card';
-import Disclaimer from './reusables/Disclaimer';
-import AppBar from './reusables/AppBar';
+import Card from './components/Card';
+import Disclaimer from './components/Disclaimer';
+import AppBar from './components/AppBar';
 
 function App() {
   function confirmParticipation() {
