@@ -1,18 +1,36 @@
-import React from 'react';
-import { CardContainer, CardTitle, CardContent, CardImage, CardTextarea } from '../styles/CardStyles';
-import { PrimaryButton } from '../styles/ButtonStyles';
+import React from "react";
+import { CardContainer, CardTitle, CardContent, CardImage, CardTextarea,} from "../styles/CardStyles";
+import { PrimaryButton } from "../styles/ButtonStyles";
 
-function Card({ title, content, imageUrl, showTextarea, placeholder, onButtonClick, buttonText, sup }) {
-      return (
+function Card({
+  title,
+  content,
+  imageUrl,
+  showTextarea,
+  placeholder,
+  onButtonClick,
+  buttonText,
+  sup,
+  url,
+  setUrl,
+}) {
+  return (
     <CardContainer>
       {imageUrl && <CardImage src={imageUrl} alt="Card Image" />}
       {title && <CardTitle>{title}</CardTitle>}
-      <CardContent>{content}{sup && <sup>{sup}</sup>}</CardContent>
-      {showTextarea && <CardTextarea placeholder={placeholder || "Enter your text"} />}
+      <CardContent>
+        {content}
+        {sup && <sup>{sup}</sup>}
+      </CardContent>
+      {showTextarea && (
+        <CardTextarea
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          placeholder={placeholder || "Enter your text"}
+        />
+      )}
       {onButtonClick && buttonText && (
-        <PrimaryButton onClick={onButtonClick}>
-          {buttonText}
-        </PrimaryButton>
+        <PrimaryButton onClick={onButtonClick}>{buttonText}</PrimaryButton>
       )}
     </CardContainer>
   );

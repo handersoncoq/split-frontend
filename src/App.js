@@ -1,12 +1,17 @@
+import React, { useState } from 'react';
 import './App.css';
 import GlobalStyle from './styles/GlobalStyles';
 import Card from './components/Card';
 import Disclaimer from './components/Disclaimer';
 import AppBar from './components/AppBar';
+import { processYoutubeUrl } from './services/ProcessService';
 
 function App() {
-  function confirmParticipation() {
-    alert('Splitting in progress!');
+
+  const [url, setUrl] = useState('');
+
+  function processUrl() {
+    processYoutubeUrl(url);
   }
   return (
     <>
@@ -20,9 +25,11 @@ function App() {
          <Card 
           content="Paste your YouTube url here"
           sup="1"
+          url={url}
+          setUrl={setUrl}
           showTextarea = {true}
           placeholder = "https://www.youtube.com/watch?v=example"
-          onButtonClick={confirmParticipation}
+          onButtonClick={processUrl}
           buttonText="Split"
         />
         <Disclaimer
