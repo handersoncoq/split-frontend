@@ -7,22 +7,29 @@ import AppBar from './components/AppBar';
 import { processYoutubeUrl } from './services/ProcessService';
 
 function App() {
-
   const [url, setUrl] = useState('');
+  const [progress, setProgress] = useState(0);
 
-  function processUrl() {
-    processYoutubeUrl(url);
-  }
+  const handleProgress = (progressValue) => {
+    setProgress(progressValue);
+  };
+
+  const processUrl = () => {
+    setProgress(0);
+    processYoutubeUrl(url, handleProgress);
+    setUrl('')
+  };
+
   return (
     <>
-    <GlobalStyle />
+      <GlobalStyle />
       <div className='app-wrapper'>
         <AppBar />
         <div className='front-page-header'>
           <h1 className='front-page-title'>Split/</h1>
           <h4 className='front-page-subtitle'>Free & Simple. Always!</h4>
         </div>
-         <Card 
+        <Card 
           content="Paste your YouTube url here"
           sup="1"
           url={url}
@@ -31,9 +38,10 @@ function App() {
           placeholder = "https://www.youtube.com/watch?v=example"
           onButtonClick={processUrl}
           buttonText="Split"
+          progress={progress}
         />
         <Disclaimer
-          text = {`Disclaimer: This application is provided "as is" without any guarantees or warranty. Users are solely responsible for the legality of their actions when using this app. This app is not affiliated with YouTube, and users must ensure they have the necessary rights to download and modify content from YouTube. Use at your own risk.`}
+          text={`Disclaimer: This application is provided "as is" without any guarantees or warranty...`}
           sup="1"
         />
       </div>

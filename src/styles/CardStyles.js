@@ -34,7 +34,7 @@ export const CardTextarea = styled.textarea`
   padding: 1em;
   padding-bottom: 0;
   margin-top: 10px;
-  border: 1px solid palevioletred;
+  border: 1px solid #1da1f2;
   border-radius: 5px;
   box-sizing: border-box;
   font-size: medium;

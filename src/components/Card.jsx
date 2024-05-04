@@ -1,6 +1,7 @@
 import React from "react";
 import { CardContainer, CardTitle, CardContent, CardImage, CardTextarea,} from "../styles/CardStyles";
 import { PrimaryButton } from "../styles/ButtonStyles";
+import ProgressBar from "./ProgressBar";
 
 function Card({
   title,
@@ -13,6 +14,7 @@ function Card({
   sup,
   url,
   setUrl,
+  progress,
 }) {
   return (
     <CardContainer>
@@ -29,6 +31,7 @@ function Card({
           placeholder={placeholder || "Enter your text"}
         />
       )}
+      {progress > 0 && <ProgressBar progress={progress} />}
       {onButtonClick && buttonText && (
         <PrimaryButton onClick={onButtonClick}>{buttonText}</PrimaryButton>
       )}
