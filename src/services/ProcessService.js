@@ -7,17 +7,15 @@ export const processYoutubeUrl = async (youtubeUrl, onProgress) => {
         return;
     }
 
-    // Initialize progress at 0%
     onProgress(0);
     let progress = 0;
     const incrementProgress = () => {
-        if (progress < 95) { // Only increment to 95% to ensure it doesn't reach 100% prematurely
+        if (progress < 95) {
             progress += 5;
             onProgress(progress);
         }
     };
 
-    // Set up a timer to increment progress every second
     const timer = setInterval(incrementProgress, 1000);
 
     try {
@@ -27,8 +25,8 @@ export const processYoutubeUrl = async (youtubeUrl, onProgress) => {
             responseType: 'blob'
         });
 
-        clearInterval(timer); // Stop the progress timer as the download is complete
-        onProgress(100); // Set progress to 100% on successful completion
+        clearInterval(timer);
+        onProgress(100);
 
         const mimeType = response.headers['content-type'] || 'audio/webm';
         const contentDisposition = response.headers['content-disposition'];
@@ -51,9 +49,9 @@ export const processYoutubeUrl = async (youtubeUrl, onProgress) => {
         link.parentNode.removeChild(link);
         window.URL.revokeObjectURL(url);
     } catch (error) {
-        clearInterval(timer); // Ensure to clear the timer in case of an error
+        clearInterval(timer);
         console.error('Error processing url:', error);
         window.alert('Error processing url. Please try again');
-        onProgress(0); // Reset progress on error
+        onProgress(0);
     }
 };
