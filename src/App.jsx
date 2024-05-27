@@ -41,7 +41,7 @@ function App() {
           progress={progress}
         />
         <Disclaimer
-          text={`Disclaimer: This application is provided "as is" without any guarantees or warranty...`}
+          text={`This application is provided "as is" without any guarantees or warranty. In association with the product, Split makes no warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, of title, or of non-infringement of third-party rights. Use of the product by a user is at the user's risk.`}
           sup="1"
         />
       </div>

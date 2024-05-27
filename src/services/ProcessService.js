@@ -21,7 +21,7 @@ export const processYoutubeUrl = async (youtubeUrl, onProgress) => {
     try {
         const response = await axios({
             method: 'GET',
-            url: `${baseUrl}/process?url=${encodeURIComponent(youtubeUrl)}`,
+            url: `${baseUrl}/download?url=${encodeURIComponent(youtubeUrl)}`,
             responseType: 'blob'
         });
 
